@@ -1,4 +1,4 @@
-var URL = 'https://raw.githubusercontent.com/sarahgrant11/d3-challenge/master/assets/data/data.csv'
+var URL = 'https://raw.githubusercontent.com/sarahgrant11/d3-challenge/master/D3_data_journalism/assets/data/Statedata.csv'
 
 var height = 620;
 var width = 960;
