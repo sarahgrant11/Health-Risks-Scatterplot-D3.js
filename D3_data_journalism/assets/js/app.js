@@ -200,7 +200,7 @@ d3.csv(URL).then(function(Statedata, err) {
         .text("Average Household Income");
 
     var ylabelsGroup = chartGroup.append("g")
-        .attr("transform", `translate(${0-margin.left/3)},${height/2})`)
+        .attr("transform", `translate(${0-margin.left/3}),${height/2})`)
 
     var smokerLabel = ylabelsGroup.append("text")
         .attr("x", 0)
