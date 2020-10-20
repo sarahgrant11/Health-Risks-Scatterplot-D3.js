@@ -55,14 +55,14 @@ function yScale(Statedata, chosenYAxis) {
     return yLinScale
 }
 
-function renderAxes(newXScale, xAxis) {
+function renderXAxis(newXScale, xAxis) {
     var bottomAxis = d3.axisBottom(newXScale);
         xAxis.transition()
             .duration(1000)
             .call(bottomAxis);
 
     return xAxis;
-
+}
 function renderYAxis(newYScale, yAxis) {
   var leftAxis= d3.axisLeft(newYScale);
         yAxis.transition()
@@ -70,7 +70,6 @@ function renderYAxis(newYScale, yAxis) {
             .call(leftAxis);
 
     return yAxis;
-}
 }
 
 // function used for updating circles group with a transition to
@@ -113,7 +112,7 @@ function updateToolTip(chosenXAxis, chosenYAxis, circlesGroup) {
     }
 
     var toolTip = d3.tip()
-        .attr("class", "tooltip")
+        .attr("class", "d3-tip")
         .offset([80, -60])
         .style("background", "lightgray")
         .html(function(data) {
@@ -175,24 +174,24 @@ d3.csv(URL).then(function(Statedata, err) {
         .attr("opacity", ".5");
 
   // Create group for three x-axis labels
-    var labelsGroup = chartGroup.append("g")
-        .attr("transform", `translate(${width / 2}, ${height + 20})`);
+    var xlabelsGroup = chartGroup.append("g")
+        .attr("transform", `translate(${width / 2}, ${height/1.25})`);
 
-    var povertyLabel = labelsGroup.append("text")
+    var povertyLabel = xlabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 20)
         .attr("value", "poverty") // value to grab for event listener
         .classed("active", true)
         .text("In Poverty (%)");
 
-    var ageLabel = labelsGroup.append("text")
+    var ageLabel = xlabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 40)
         .attr("value", "age") // value to grab for event listener
         .classed("inactive", true)
         .text("Average Age");
 
-    var incomeLabel = labelsGroup.append("text")
+    var incomeLabel = xlabelsGroup.append("text")
         .attr("x", 0)
         .attr("y", 60)
         .attr("value", "income") // value to grab for event listener
@@ -200,7 +199,7 @@ d3.csv(URL).then(function(Statedata, err) {
         .text("Average Household Income");
 
     var ylabelsGroup = chartGroup.append("g")
-        .attr("transform", `translate(${0-margin.left/3}),${height/2})`)
+        .attr("transform", `translate(${0-margin.left/3},${height/2})`)
 
     var smokerLabel = ylabelsGroup.append("text")
         .attr("x", 0)
